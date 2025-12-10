@@ -483,53 +483,15 @@
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1290px) {
   #gallery{
     grid-template-columns: repeat(1, 1fr);
-  }
-
-  .gallery-scroll {
-  width: 41%;
-}
-}
-
-@media (max-width: 780px) {
-  .gallery-arrow{
-      display: none;
-    }
-
-    #sort-bar {
-    flex-wrap: wrap;
-    align-items: flex-start;
-  }
-
-
-  /* force a line break BEFORE sort-current */
-  #sort-bar::after {
-    content: "";
-    flex-basis: 100%;
-    height: 0;
-    order: 1;
-  }
-
-  .sort-button {
-    order: 1;
-    margin-bottom: -12px;
-  }
-
-  .sort-current {
-    order: 2;
-    width: fit-content;
-  }
-
-  #fullscreen-viewer img {
-    max-width: 82vw !important;
+   
   }
 }
 
 
-
-@media (max-width: 600px) {
+@media (max-width: 804px) {
   /* ---- LAYOUT RESET FOR PHONE ---- */
   body {
     overflow: auto;
@@ -692,7 +654,7 @@
   display: none;
 }
 
-@media (max-width: 500px){
+@media (max-width: 490px){
   .mobile-meta{
     display: none;
   }
@@ -788,9 +750,7 @@
     <div id="sort-bar">
       <div class="sort-button text-box">SORT</div>
       <div class="gallery-arrow">
-        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
-     viewBox="0 0 20 20"
-     preserveAspectRatio="xMidYMid meet">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
           <!-- rotated line -->
           <line x1="5" y1="10" x2="12" y2="10"
                 stroke="#000" stroke-width="2" stroke-linecap="square"/>
@@ -825,7 +785,7 @@
 
 function isMobile() {
   // same breakpoint as your CSS mobile layout
-  return window.matchMedia("(max-width: 600px)").matches;
+  return window.matchMedia("(max-width: 804px)").matches;
 }
 
 
@@ -873,6 +833,19 @@ function isMobile() {
       </div>
     </div>
   `;
+
+  const downloadBtn = wrapper.querySelector(".mobile-download");
+const img = wrapper.querySelector("img");
+
+  if (downloadBtn) {
+    downloadBtn.addEventListener("click", (e) => {
+      e.stopPropagation(); // important: don’t toggle active state
+      downloadImage(
+        img.src,
+        `${numberText}-${prompt}.png`
+      );
+    });
+  }
 
   return {
     wrapper,
@@ -1177,9 +1150,34 @@ function renumberRight() {
     }
   });
 
+   // DOWNLOAD BUTTON
+  async function downloadImage(url, filename) {
+  try {
+    const response = await fetch(url, { mode: "no-cors" });
+
+    const blob = await response.blob();
+    const blobURL = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = blobURL;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+
+    URL.revokeObjectURL(blobURL);
+    a.remove();
+
+  } catch (err) {
+    console.error("Download failed:", err);
+  }
+}
+
+
 </script>
 
 
 </body>
 </html>
+
+
 
