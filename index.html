@@ -556,8 +556,6 @@
     top: calc(24px * 2 + 37px); /* below sort bar */
     left: 0;
     right: 0;
-  
-   
 
     z-index: 150;
     background: #e7e8e9;
@@ -639,7 +637,6 @@
     cursor: pointer;
   }
 
-
   /* right box = number + prompt */
   .mobile-meta {
     justify-content: flex-end;
@@ -654,7 +651,13 @@
   display: none;
 }
 
+.mobile-hint-bar{
+  display: none;
+}
+
 @media (max-width: 490px){
+
+
   .mobile-meta{
     display: none;
   }
@@ -663,38 +666,56 @@
     display: none;
   }
 
-  .gallery-wrap {
-  padding-top: 50px;
-}
-
   .mobile-hint-bar {
     position: sticky;
-    top: 0;
+    top: 24px;
     z-index: 200;
 
-    height: 50px; /* same visual weight as fullscreen topbar */
+    height: 37px;
     background: white;
+    margin: 0 24px;
 
     border-left: 14px solid black;
     border-right: 14px solid black;
 
+    overflow: hidden;
     display: flex;
     align-items: center;
-    overflow: hidden;
+  }
 
-    margin: 0 24px;
+  .mobile-hint-mask {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    margin-left: 14px;
+    margin-right: 14px;
   }
 
   .mobile-hint-track {
     display: inline-flex;
-    white-space: nowrap;
-    animation: mobile-scroll 18s linear infinite;
+    width: max-content;
+    flex-shrink: 0;
 
+    animation: mobile-scroll 10s linear infinite;
+  }
+
+  .mobile-scroll-text {
     font-family: "OCR A Extended", monospace;
     font-size: 28px;
     letter-spacing: -3px;
+    white-space: nowrap;
+  }
 
-    padding-left: 24px;
+  .tap{
+    color: red;
+  }
+
+  #sort-bar{
+    top: 61px;
+  }
+
+  #sort-options{
+    top: calc(24px * 2 + 98px);
   }
 
   @keyframes mobile-scroll {
@@ -707,6 +728,18 @@
 </head>
 
 <body>
+  <div class="mobile-hint-bar">
+    <div class="mobile-hint-mask">
+      <div class="mobile-hint-track">
+        <span class="mobile-scroll-text">
+          &nbsp;<span class="tap">TAP</span> + <span class="tap">HOLD</span> IMG TO SAVE — <span class="tap">TAP</span> + <span class="tap">HOLD</span> IMG TO SAVE —
+        </span>
+        <span class="mobile-scroll-text">
+          &nbsp;<span class="tap">TAP</span> + <span class="tap">HOLD</span> IMG TO SAVE — <span class="tap">TAP</span> + <span class="tap">HOLD</span> IMG TO SAVE —
+        </span>
+      </div>
+    </div>
+  </div>
 <!-- ===================== GALLERY TOP BAR (fullscreen only) ===================== -->
 <div id="gallery-topbar" class="gallery-topbar">
     <!-- LEFT SECTION -->
@@ -771,13 +804,6 @@
   </div>
   </div> 
 </div>
-
-<div class="mobile-hint-bar">
-  <div class="mobile-hint-track">
-    TAP & HOLD TO SAVE — TAP & HOLD TO SAVE — TAP & HOLD TO SAVE —
-  </div>
-</div>
-
 
 <div class="app">
   <!-- LEFT AUTO SCROLL COLUMN -->
@@ -1224,4 +1250,6 @@ function renumberRight() {
 
 </body>
 </html>
+
+
 
