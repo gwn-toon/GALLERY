@@ -840,8 +840,9 @@ const img = wrapper.querySelector("img");
 
   if (downloadBtn) {
     downloadBtn.addEventListener("click", (e) => {
-      e.stopPropagation(); // important: don’t toggle active state
-      downloadImage(
+      e.stopPropagation(); // IMPORTANT: prevents closing the active box
+    
+      shareImage(
         img.src,
         `${numberText}-${prompt}.png`
       );
@@ -1172,6 +1173,30 @@ function renumberRight() {
     console.error("Download failed:", err);
   }
 }
+
+  async function shareImage(url, filename) {
+  try {
+    const res = await fetch(url, { mode: "cors" });
+    const blob = await res.blob();
+
+    const file = new File([blob], filename, { type: blob.type });
+
+    // iOS / modern mobile browsers
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      await navigator.share({
+        files: [file],
+      });
+      return;
+    }
+
+    // Fallback (desktop)
+    downloadImage(url, filename);
+
+  } catch (err) {
+    console.error("Share failed:", err);
+  }
+}
+
 
 
 </script>
