@@ -656,8 +656,7 @@
 }
 
 @media (max-width: 490px){
-  .box-wrapper:hover .display-box::after,
-  .box-wrapper.active .display-box::after {
+ .display-box::after {
     opacity: 0;
   }
 
@@ -724,10 +723,6 @@
   @keyframes mobile-scroll {
     0%   { transform: translateX(0); }
     100% { transform: translateX(-50%); }
-  }
-  .box-wrapper:hover {
-    pointer-events: none;
-
   }
 }
   </style>
