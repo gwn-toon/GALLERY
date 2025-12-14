@@ -656,10 +656,6 @@
 }
 
 @media (max-width: 490px){
-  body {
-    -webkit-user-select: none;
-    user-select: none;
-  }
   
  .display-box::after {
     opacity: 0;
@@ -728,6 +724,26 @@
   @keyframes mobile-scroll {
     0%   { transform: translateX(0); }
     100% { transform: translateX(-50%); }
+  }
+   body {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .image-container img {
+    -webkit-user-drag: none;
+    user-drag: none;
+  }
+
+  .mobile-strip,
+  .mobile-meta,
+  .number-overlay,
+  .overlay-number,
+  .overlay-prompt,
+  .mobile-hint-bar,
+  .mobile-scroll-text {
+    -webkit-user-select: none;
+    user-select: none;
   }
 }
   </style>
