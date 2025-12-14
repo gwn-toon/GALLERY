@@ -722,8 +722,11 @@
     0%   { transform: translateX(0); }
     100% { transform: translateX(-50%); }
   }
-}
+  .box-wrapper:hover {
+    pointer-events: none;
 
+  }
+}
   </style>
 </head>
 
@@ -732,10 +735,10 @@
     <div class="mobile-hint-mask">
       <div class="mobile-hint-track">
         <span class="mobile-scroll-text">
-          &nbsp;<span class="tap">TAP</span> + <span class="tap">HOLD</span> IMG TO SAVE — <span class="tap">TAP</span> + <span class="tap">HOLD</span> IMG TO SAVE —
+          &nbsp;<span class="tap">TAP</span> + <span class="tap">HOLD</span> TO SAVE — <span class="tap">TAP</span> + <span class="tap">HOLD</span> TO SAVE —
         </span>
         <span class="mobile-scroll-text">
-          &nbsp;<span class="tap">TAP</span> + <span class="tap">HOLD</span> IMG TO SAVE — <span class="tap">TAP</span> + <span class="tap">HOLD</span> IMG TO SAVE —
+          &nbsp;<span class="tap">TAP</span> + <span class="tap">HOLD</span> TO SAVE — <span class="tap">TAP</span> + <span class="tap">HOLD</span> TO SAVE —
         </span>
       </div>
     </div>
@@ -1250,4 +1253,6 @@ function renumberRight() {
 
 </body>
 </html>
+
+
 
