@@ -656,18 +656,26 @@
 }
 
 @media (max-width: 490px){
-  
- .box-wrapper {
-    pointer-events: none;
-    -webkit-tap-highlight-color: transparent;
+
+  /* --- FIX 1: neutralize active state visuals on phones --- */
+  .box-wrapper.active {
+    all: unset;
   }
 
-  .box-wrapper * {
-    pointer-events: none;
+  /* --- FIX 2: prevent text selection instead of image save --- */
+  body {
+    -webkit-user-select: none;
+    user-select: none;
   }
 
-  .box-wrapper img {
-    pointer-events: auto;
+  img {
+    -webkit-user-drag: none;
+  }
+
+  /* -------------------------------------------------------- */
+
+  .display-box::after {
+    opacity: 0;
   }
 
   .mobile-meta{
@@ -734,17 +742,8 @@
     0%   { transform: translateX(0); }
     100% { transform: translateX(-50%); }
   }
-  
-  body {
-    -webkit-user-select: none;
-    user-select: none;
-  }
-  
-  .image-container img {
-    -webkit-user-drag: none;
-    user-drag: none;
-  }
 }
+
 }
   </style>
 </head>
