@@ -1118,6 +1118,14 @@ function renumberRight() {
 
   function enableMobileInteraction(wrapper) {
   wrapper.addEventListener("click", () => {
+    const width = window.innerWidth;
+
+    // ⛔ TRUE PHONE MODE: absolutely no interaction
+    if (width <= 490) {
+      return;
+    }
+
+    // 📱 tablet / small desktop mobile layout
     if (!isMobile()) return;
 
     const isActive = wrapper.classList.contains("active");
