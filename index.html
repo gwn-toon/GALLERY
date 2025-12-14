@@ -657,8 +657,17 @@
 
 @media (max-width: 490px){
   
- .display-box::after {
-    opacity: 0;
+ .box-wrapper {
+    pointer-events: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .box-wrapper * {
+    pointer-events: none;
+  }
+
+  .box-wrapper img {
+    pointer-events: auto;
   }
 
   .mobile-meta{
