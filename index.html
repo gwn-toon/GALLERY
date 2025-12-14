@@ -657,12 +657,13 @@
 
 @media (max-width: 490px){
 
-  /* --- FIX 1: neutralize active state visuals on phones --- */
-  .box-wrapper.active {
-    all: unset;
+  /* --- FIX: kill border from hover + active emulation --- */
+  .box-wrapper:hover .display-box::after,
+  .box-wrapper.active .display-box::after {
+    opacity: 0;
   }
 
-  /* --- FIX 2: prevent text selection instead of image save --- */
+  /* --- FIX: prevent text selection --- */
   body {
     -webkit-user-select: none;
     user-select: none;
@@ -672,11 +673,7 @@
     -webkit-user-drag: none;
   }
 
-  /* -------------------------------------------------------- */
-
-  .display-box::after {
-    opacity: 0;
-  }
+  /* ---------------------------------------------------- */
 
   .mobile-meta{
     display: none;
