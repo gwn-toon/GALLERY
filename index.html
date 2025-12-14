@@ -654,7 +654,6 @@
 .mobile-hint-bar{
   display: none;
 }
-
 @media (max-width: 490px){
 
   /* --- FIX: kill border from hover + active emulation --- */
@@ -674,6 +673,10 @@
   }
 
   /* ---------------------------------------------------- */
+
+  .display-box::after {
+    opacity: 0;
+  }
 
   .mobile-meta{
     display: none;
@@ -740,6 +743,7 @@
     100% { transform: translateX(-50%); }
   }
 }
+
 
 }
   </style>
