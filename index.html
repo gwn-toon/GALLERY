@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>GALLERY</title>
+  <title>VIEW</title>
 
   <link href="https://fonts.cdnfonts.com/css/ocr-a-extended" rel="stylesheet">
   <style>
@@ -493,6 +493,18 @@
 
 @media (max-width: 804px) {
   /* ---- LAYOUT RESET FOR PHONE ---- */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 24px;
+    background: #e7e8e9;
+    z-index: 199;
+    pointer-events: none;
+  }
+  
   body {
     overflow: auto;
   }
@@ -520,8 +532,7 @@
   #gallery {
     grid-template-columns: 1fr;
     padding: 24px;
-    padding-top: 0px;
-    overflow-y: visible;        /* ⬅ override desktop scroll */
+    overflow: visible;        /* ⬅ override desktop scroll */
   }
 
   /* no hover overlay on mobile */
@@ -654,28 +665,10 @@
 .mobile-hint-bar{
   display: none;
 }
+
 @media (max-width: 490px){
-
-  /* --- FIX: kill border from hover + active emulation --- */
-  .box-wrapper:hover .display-box::after,
-  .box-wrapper.active .display-box::after {
-    opacity: 0;
-  }
-
-  /* --- FIX: prevent text selection --- */
-  body {
-    -webkit-user-select: none;
-    user-select: none;
-  }
-
-  img {
-    -webkit-user-drag: none;
-  }
-
-  /* ---------------------------------------------------- */
-
   .display-box::after {
-    opacity: 0;
+  opacity: 0;
   }
 
   .mobile-meta{
@@ -743,9 +736,6 @@
     100% { transform: translateX(-50%); }
   }
 }
-
-
-}
   </style>
 </head>
 
@@ -754,10 +744,10 @@
     <div class="mobile-hint-mask">
       <div class="mobile-hint-track">
         <span class="mobile-scroll-text">
-          &nbsp;<span class="tap">TAP</span> + <span class="tap">HOLD</span> TO SAVE — <span class="tap">TAP</span> + <span class="tap">HOLD</span> TO SAVE —
+          &nbsp;<span class="tap">TAP</span> + <span class="tap">HOLD</span> TO SAVE - <span class="tap">TAP</span> + <span class="tap">HOLD</span> TO SAVE -
         </span>
         <span class="mobile-scroll-text">
-          &nbsp;<span class="tap">TAP</span> + <span class="tap">HOLD</span> TO SAVE — <span class="tap">TAP</span> + <span class="tap">HOLD</span> TO SAVE —
+          &nbsp;<span class="tap">TAP</span> + <span class="tap">HOLD</span> TO SAVE - <span class="tap">TAP</span> + <span class="tap">HOLD</span> TO SAVE -
         </span>
       </div>
     </div>
@@ -815,7 +805,7 @@
 <div id="qr-viewer">
   <div id="qr-panel">
   <div id="qr-wrap">
-    <img src="frame.png" alt="Gallery QR code">
+    <img src="QR.png" alt="Gallery QR code">
     <div id="qr-close" class="fs-close">
       <!-- your cross SVG will go here -->
       <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -1118,14 +1108,6 @@ function renumberRight() {
 
   function enableMobileInteraction(wrapper) {
   wrapper.addEventListener("click", () => {
-    const width = window.innerWidth;
-
-    // ⛔ TRUE PHONE MODE: absolutely no interaction
-    if (width <= 490) {
-      return;
-    }
-
-    // 📱 tablet / small desktop mobile layout
     if (!isMobile()) return;
 
     const isActive = wrapper.classList.contains("active");
@@ -1280,6 +1262,8 @@ function renumberRight() {
 
 </body>
 </html>
+
+
 
 
 
